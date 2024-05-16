@@ -17,11 +17,11 @@
 
         <ImageButton
             android:id="@+id/menuButton"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/baseline_menu_24"
             android:background="@color/md_theme_primary"
-            tools:ignore="ContentDescription" />
+            android:contentDescription="boton menu" />
 
         <TextView
             android:layout_width="match_parent"
@@ -42,13 +42,14 @@
         android:padding="15sp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:clickable="true"
-            app:srcCompat="@drawable/add" />
+            app:srcCompat="@drawable/add"
+            android:contentDescription="boton añadir tarea"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -57,7 +58,5 @@
             tools:listitem="@layout/item"/>
 
     </RelativeLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
