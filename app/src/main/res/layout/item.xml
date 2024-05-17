@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/md_theme_tertiaryFixedDim"
-        android:padding="10sp"
-        android:layout_marginBottom="10sp">
+        android:padding="10dp"
+        android:layout_marginBottom="10dp">
 
         <CheckBox
             android:id="@+id/check"
@@ -24,24 +23,23 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/check"
-            android:layout_toStartOf="@+id/ibDelete"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="10sp"
-            android:textSize="20sp"/>
+            android:layout_toEndOf="@id/check"
+            android:layout_toStartOf="@id/ibDelete"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/tvTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/check"
+            android:layout_below="@id/tvTitle"
+            android:layout_toStartOf="@id/ibDelete"
+            android:layout_marginStart="10dp"
             android:textSize="16sp"
-            android:layout_marginEnd="5sp"
-            android:layout_toEndOf="@+id/check"
-            android:layout_below="@+id/tvTitle"
-            android:layout_toStartOf="@+id/ibDelete"
-            android:paddingStart="10sp"
-            android:paddingEnd="10sp" />
+            android:textColor="@android:color/darker_gray"/>
 
         <ImageButton
             android:id="@+id/ibDelete"
@@ -50,9 +48,10 @@
             android:src="@drawable/cancel"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@color/md_theme_tertiaryFixedDim"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="deleteTask"
-            android:layout_marginStart="15sp"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
     </RelativeLayout>
 </FrameLayout>

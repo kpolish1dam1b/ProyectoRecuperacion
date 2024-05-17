@@ -3,5 +3,6 @@ package com.example.todoapp
 data class Task(
     val id: Int ,
     val title: String,
-    val tag: String
+    val tag: String,
+    var completed: Boolean = false
 )
