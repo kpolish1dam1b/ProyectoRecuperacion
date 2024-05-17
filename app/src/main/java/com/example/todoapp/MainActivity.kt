@@ -10,7 +10,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class MainActivity : AppCompatActivity(), AddTask.OnDialogResultListener {
+class MainActivity : AppCompatActivity(), DialogFragment.OnDialogResultListener {
 
     private lateinit var taskViewModel: TaskViewModel
     private lateinit var adapter: TaskAdapter
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), AddTask.OnDialogResultListener {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val dialog = AddTask()
+            val dialog = DialogFragment()
             dialog.setOnDialogResultListener(this)
             dialog.show(supportFragmentManager, "AddTaskDialog")
         }
