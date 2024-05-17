@@ -51,6 +51,15 @@ class TaskViewModel : ViewModel() {
     }
 
 
+    fun removeAllTasks() {
+        val emptyList = emptyList<Task>()
+        _tasks.value = emptyList
+        _filteredTasks.value = emptyList
+        allTasks = emptyList
+        _completedTasks.clear()
+    }
+
+
     fun markTaskCompleted(taskId: Int, completed: Boolean) {
         _completedTasks[taskId] = completed
         val updatedTasks = _tasks.value?.map { task ->
@@ -65,7 +74,4 @@ class TaskViewModel : ViewModel() {
         allTasks = updatedTasks
     }
 
-    fun isTaskCompleted(taskId: Int): Boolean {
-        return _completedTasks[taskId] ?: false
-    }
 }

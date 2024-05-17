@@ -8,7 +8,7 @@
     tools:context=".MainActivity"
     style="@style/AppTheme">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/mainLayout1"
         android:layout_width="match_parent"
         android:layout_height="60sp"
@@ -32,7 +32,7 @@
             android:textColor="#ffff"
             android:textAlignment="center"/>
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/mainLayout2"
