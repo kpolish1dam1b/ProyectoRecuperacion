@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoapp.taskcontroller.Task
 import com.example.todoapp.taskcontroller.TaskAdapter
 import com.example.todoapp.taskcontroller.TaskViewModel
 import com.google.android.material.button.MaterialButtonToggleGroup

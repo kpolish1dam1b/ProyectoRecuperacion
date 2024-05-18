@@ -9,7 +9,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
-import com.example.todoapp.Task
 
 // Adaptador para gestionar la lista de tareas en un RecyclerView
 class TaskAdapter(
