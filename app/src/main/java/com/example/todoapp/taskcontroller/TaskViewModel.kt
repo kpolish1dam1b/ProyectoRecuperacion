@@ -1,8 +1,9 @@
-package com.example.todoapp
+package com.example.todoapp.taskcontroller
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.todoapp.Task
 
 // ViewModel para manejar la lógica relacionada con las tareas
 class TaskViewModel : ViewModel() {

@@ -2,4 +2,27 @@
     <string name="app_name">ToDoApp</string>
     <string name="to_do_list">To Do List</string>
     <string name="Task">Task</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="btnlogin">Login</string>
+    <string name="btnsign_up">Sign Up</string>
+    <string name="boton_menu">boton menu</string>
+    <string name="work">Work</string>
+    <string name="personal">Personal</string>
+    <string name="fitness">Fitness</string>
+    <string name="boton_add_tarea">boton añadir tarea</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="singup_username">Username</string>
+    <string name="signup_password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="btn_login">Login</string>
+    <string name="todo_list">ToDo List</string>
+    <string name="df_work">Work</string>
+    <string name="df_personal">Personal</string>
+    <string name="df_fitness">Fitness</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="ok">OK</string>
+    <string name="deletetask">deleteTask</string>
 </resources>

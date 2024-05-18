@@ -22,7 +22,7 @@
             android:layout_height="50dp"
             android:src="@drawable/baseline_menu_24"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="boton menu" />
+            android:contentDescription="@string/boton_menu" />
 
         <TextView
             android:layout_width="match_parent"
@@ -54,21 +54,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Work" />
+                android:text="@string/work" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/personalToggle"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Personal" />
+                android:text="@string/personal" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/fitnessToggle"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fitness" />
+                android:text="@string/fitness" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
@@ -80,7 +80,7 @@
             android:layout_alignParentBottom="true"
             android:clickable="true"
             app:srcCompat="@drawable/add"
-            android:contentDescription="boton añadir tarea"/>
+            android:contentDescription="@string/boton_add_tarea"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

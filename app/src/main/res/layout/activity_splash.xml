@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ToDo List"
+            android:text="@string/todo_list"
             android:textColor="#ffffff"
             android:textSize="40sp"
             android:layout_centerHorizontal="true"
