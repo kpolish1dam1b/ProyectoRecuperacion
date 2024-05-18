@@ -4,22 +4,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+// ViewModel para manejar la lógica relacionada con las tareas
 class TaskViewModel : ViewModel() {
+    // LiveData mutable para la lista de todas las tareas
     private val _tasks = MutableLiveData<List<Task>>()
-    val tasks: LiveData<List<Task>> get() = _tasks
+    val tasks: LiveData<List<Task>> get() = _tasks // LiveData inmutable para exponer la lista de tareas
 
+    // LiveData mutable para la lista de tareas filtradas
     private val _filteredTasks = MutableLiveData<List<Task>>()
-    val filteredTasks: LiveData<List<Task>> get() = _filteredTasks
+    val filteredTasks: LiveData<List<Task>> get() = _filteredTasks // LiveData inmutable para exponer la lista de tareas filtradas
 
+    // Mapa mutable para almacenar el estado completado de cada tarea
     private val _completedTasks = mutableMapOf<Int, Boolean>()
+
+    // Lista de todas las tareas
     private var allTasks: List<Task> = emptyList()
 
+    // Inicialización del ViewModel
     init {
         val initialTasks = listOf<Task>()
         _tasks.value = initialTasks
         _filteredTasks.value = initialTasks
     }
 
+    // Método para agregar una nueva tarea
     fun agregarTarea(tarea: Task) {
         val updatedTasks = (_tasks.value ?: emptyList()) + tarea
         _tasks.value = updatedTasks
@@ -28,6 +36,7 @@ class TaskViewModel : ViewModel() {
         _completedTasks[tarea.id] = tarea.completed
     }
 
+    // Método para filtrar las tareas por etiquetas
     fun filtrarPorEtiquetas(etiquetas: List<String>) {
         val filtered = if (etiquetas.isEmpty()) {
             allTasks
@@ -41,7 +50,7 @@ class TaskViewModel : ViewModel() {
         _filteredTasks.value = filtered
     }
 
-
+    // Método para eliminar una tarea
     fun removeTask(task: Task) {
         val updatedTasks = _tasks.value.orEmpty() - task
         _tasks.value = updatedTasks
@@ -50,7 +59,7 @@ class TaskViewModel : ViewModel() {
         _completedTasks.remove(task.id)
     }
 
-
+    // Método para eliminar todas las tareas
     fun removeAllTasks() {
         val emptyList = emptyList<Task>()
         _tasks.value = emptyList
@@ -59,7 +68,7 @@ class TaskViewModel : ViewModel() {
         _completedTasks.clear()
     }
 
-
+    // Método para marcar una tarea como completada o no completada
     fun markTaskCompleted(taskId: Int, completed: Boolean) {
         _completedTasks[taskId] = completed
         val updatedTasks = _tasks.value?.map { task ->
@@ -70,8 +79,7 @@ class TaskViewModel : ViewModel() {
             }
         } ?: emptyList()
         _tasks.value = updatedTasks
-        _filteredTasks.value = updatedTasks  // Update the filtered list as well
+        _filteredTasks.value = updatedTasks  // Actualizar la lista filtrada también
         allTasks = updatedTasks
     }
-
 }
