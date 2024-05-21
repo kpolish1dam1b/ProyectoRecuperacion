@@ -10,13 +10,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todoapp.taskcontroller.Task
+import com.example.todoapp.model.database.AppDatabase
+import com.example.todoapp.model.entity.Task
 import com.example.todoapp.taskcontroller.TaskAdapter
 import com.example.todoapp.taskcontroller.TaskViewModel
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 // Clase principal de la aplicación que muestra la lista de tareas
 class MainActivity : AppCompatActivity(), DialogFragment.OnDialogResultListener {
@@ -30,6 +34,13 @@ class MainActivity : AppCompatActivity(), DialogFragment.OnDialogResultListener 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Configuración del botón de favoritos
+        val favsButton: ImageButton = findViewById(R.id.goToFavs)
+        favsButton.setOnClickListener { view ->
+            startActivity(Intent(this, FavoritosActivity::class.java))
+            this.finish()
+        }
+
         // Configuración del botón de menú
         val menuButton: ImageButton = findViewById(R.id.menuButton)
         menuButton.setOnClickListener { view ->
@@ -37,7 +48,7 @@ class MainActivity : AppCompatActivity(), DialogFragment.OnDialogResultListener 
         }
 
         // Inicialización del ViewModel
-        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        taskViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(TaskViewModel::class.java)
 
         // Configuración del grupo de botones de alternancia
         val toggleGroup = findViewById<MaterialButtonToggleGroup>(R.id.toggleButtons)
@@ -69,6 +80,8 @@ class MainActivity : AppCompatActivity(), DialogFragment.OnDialogResultListener 
         }, onCheckedChangeListener = { taskId, completed ->
             // Maneja el cambio de estado de una tarea (completada o no)
             taskViewModel.markTaskCompleted(taskId, completed)
+        }, onFavouriteClickListener = { task ->
+            taskViewModel.addToFavourites(task.id, !task.favourite)
         })
 
         recyclerView.adapter = adapter
@@ -96,10 +109,12 @@ class MainActivity : AppCompatActivity(), DialogFragment.OnDialogResultListener 
             id = (taskViewModel.tasks.value?.size ?: 0) + 1,
             title = taskName,
             tag = tag,
-            completed = false
+            completed = false,
+            favourite = false
         )
         // Agrega la nueva tarea al ViewModel
         taskViewModel.agregarTarea(newTask)
+
     }
 
     // Muestra un menú emergente (popup menu) cuando se hace clic en el botón de menú

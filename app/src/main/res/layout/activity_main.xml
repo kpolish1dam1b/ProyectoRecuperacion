@@ -11,28 +11,55 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/mainLayout1"
         android:layout_width="match_parent"
-        android:layout_height="60sp"
-        app:layout_constraintTop_toTopOf="@+id/mainLay"
+        android:layout_height="60dp"
         android:background="@color/md_theme_primary"
-        android:padding="10sp">
+        tools:ignore="MissingConstraints">
 
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/baseline_menu_24"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/boton_menu" />
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/to_do_list"
-            android:textSize="30sp"
-            android:textColor="#ffff"
-            android:textAlignment="center"/>
+            android:padding="10dp"> <!-- Added padding to ConstraintLayout -->
+
+            <ImageButton
+                android:id="@+id/goToFavs"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/favs_toolbar"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="boton_atras"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/to_do_list"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/goToFavs"
+                app:layout_constraintEnd_toStartOf="@id/menuButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageButton
+                android:id="@+id/menuButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/baseline_menu_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/boton_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
 
     <RelativeLayout
         android:id="@+id/mainLayout2"
