@@ -4,6 +4,7 @@ import org.junit.Assert.*
 import org.junit.Rule
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.example.todoapp.model.entity.Task
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.Mockito.mock

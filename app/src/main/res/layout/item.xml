@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/check"
-            android:layout_toStartOf="@id/ibDelete"
+            android:layout_toStartOf="@id/ibFavs"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
@@ -37,10 +37,22 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/check"
             android:layout_below="@id/tvTitle"
-            android:layout_toStartOf="@id/ibDelete"
+            android:layout_toStartOf="@id/ibFavs"
             android:layout_marginStart="10dp"
             android:textSize="16sp"
             android:textColor="@android:color/darker_gray"/>
+
+        <ImageButton
+            android:id="@+id/ibFavs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/favs"
+            android:layout_toLeftOf="@+id/ibDelete"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="add favourite"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
         <ImageButton
             android:id="@+id/ibDelete"

@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.R
+import com.example.todoapp.model.entity.Task
 
 // Adaptador para gestionar la lista de tareas en un RecyclerView
 class TaskAdapter(
     private var tasks: List<Task>, // Lista de tareas
     private val onDeleteClickListener: (Task) -> Unit, // Callback para manejar la eliminación de una tarea
-    private val onCheckedChangeListener: (Int, Boolean) -> Unit // Callback para manejar el cambio de estado de una tarea
+    private val onCheckedChangeListener: (Int, Boolean) -> Unit, // Callback para manejar el cambio de estado de una tarea
+    private val onFavouriteClickListener: (Task) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     // Método para actualizar la lista de tareas
@@ -28,6 +31,7 @@ class TaskAdapter(
         val checkBox: CheckBox = itemView.findViewById(R.id.check)
         val title: TextView = itemView.findViewById(R.id.tvTitle)
         val tag: TextView = itemView.findViewById(R.id.tvTag)
+        val favButton: ImageButton = itemView.findViewById(R.id.ibFavs)
         val deleteButton: ImageButton = itemView.findViewById(R.id.ibDelete)
 
         init {
@@ -49,6 +53,16 @@ class TaskAdapter(
                     onDeleteClickListener(task)
                 }
             }
+
+            // Listener para el botón de favoritos
+            favButton.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val task = tasks[position]
+                    onFavouriteClickListener(task)
+                    updateFavouriteIcon(task.favourite) // Actualizar el icono de favorito
+                }
+            }
         }
 
         // Método para actualizar el estilo del título (tachado si está completada)
@@ -59,6 +73,16 @@ class TaskAdapter(
                 0
             }
             title.paintFlags = title.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv() or flags
+        }
+
+        // Método para actualizar el icono de favorito
+        private fun updateFavouriteIcon(favourite: Boolean) {
+            val favIconColor = if (favourite) {
+                ContextCompat.getColor(itemView.context, com.google.android.material.R.color.m3_ref_palette_white)
+            } else {
+                ContextCompat.getColor(itemView.context, R.color.md_theme_onSecondaryContainer)
+            }
+            favButton.setColorFilter(favIconColor)
         }
 
         // Método para vincular una tarea a las vistas
