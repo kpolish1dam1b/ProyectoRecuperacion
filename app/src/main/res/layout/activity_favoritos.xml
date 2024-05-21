@@ -68,53 +68,11 @@
         android:layout_marginTop="60sp"
         android:padding="15sp">
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggleButtons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10sp">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/workToggle"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/work" />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/personalToggle"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/personal" />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/fitnessToggle"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/fitness" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:clickable="true"
-            app:srcCompat="@drawable/add"
-            android:contentDescription="@string/boton_add_tarea"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item"
-            android:layout_below="@+id/toggleButtons"/>
+            tools:listitem="@layout/item"/>
 
     </RelativeLayout>
 

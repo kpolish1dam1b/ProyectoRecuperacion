@@ -133,4 +133,8 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+    fun getFavoriteTasks(): LiveData<List<Task>> {
+        return taskDao.getFavouriteTasks()
+    }
 }

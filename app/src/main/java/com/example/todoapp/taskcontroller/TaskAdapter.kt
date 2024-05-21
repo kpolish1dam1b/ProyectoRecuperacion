@@ -76,11 +76,11 @@ class TaskAdapter(
         }
 
         // Método para actualizar el icono de favorito
-        private fun updateFavouriteIcon(favourite: Boolean) {
-            val favIconColor = if (favourite) {
-                ContextCompat.getColor(itemView.context, com.google.android.material.R.color.m3_ref_palette_white)
-            } else {
+        private fun updateFavouriteIcon(isFavorite: Boolean) {
+            val favIconColor = if (isFavorite) {
                 ContextCompat.getColor(itemView.context, R.color.md_theme_onSecondaryContainer)
+            } else {
+                ContextCompat.getColor(itemView.context, com.google.android.material.R.color.m3_ref_palette_white)
             }
             favButton.setColorFilter(favIconColor)
         }
@@ -91,6 +91,7 @@ class TaskAdapter(
             tag.text = task.tag
             checkBox.isChecked = task.completed
             updateTitleStrikeThrough(task.completed)
+            updateFavouriteIcon(task.favourite)
         }
     }
 

@@ -13,6 +13,9 @@ interface TaskDAO {
     @Query("SELECT * FROM tasks")
     fun getAll(): List<Task>
 
+    @Query("SELECT * FROM tasks WHERE favourite = 1")
+    fun getFavouriteTasks(): LiveData<List<Task>>
+
     @Insert
     fun insert(vararg task: Task)
 

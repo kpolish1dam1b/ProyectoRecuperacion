@@ -38,22 +38,6 @@ class FavoritosActivity : AppCompatActivity() {
 
         taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
 
-        val toggleGroup = findViewById<MaterialButtonToggleGroup>(R.id.toggleButtons)
-        toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
-            val selectedTags = mutableListOf<String>()
-
-            for (buttonId in toggleGroup.checkedButtonIds) {
-                val tag = when (buttonId) {
-                    R.id.workToggle -> "Work"
-                    R.id.personalToggle -> "Personal"
-                    R.id.fitnessToggle -> "Fitness"
-                    else -> ""
-                }
-                selectedTags.add(tag)
-            }
-
-            taskViewModel.filtrarPorEtiquetas(selectedTags)
-        }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         adapter = FavouritesAdapter(emptyList(), onDeleteClickListener = { task ->
@@ -68,10 +52,9 @@ class FavoritosActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        taskViewModel.favouriteTasks.observe(this, Observer { favouriteTasks ->
-            adapter.updateTasks(favouriteTasks)
+        taskViewModel.getFavoriteTasks().observe(this, Observer { favoriteTasks ->
+            adapter.updateTasks(favoriteTasks)
         })
-
     }
 
     private fun showPopupMenu(view: View) {
